@@ -120,6 +120,7 @@ print sentence
     
 '''
 https://pypi.python.org/pypi/sentiment_classifier
+http://pythonhosted.org/sentiment_classifier/
 
 from senti_classifier import senti_classifier
 sentences = ['The movie was the not that worst movie', 'It was the not bad acting by the actors']
