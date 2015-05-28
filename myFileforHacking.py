@@ -78,31 +78,51 @@ def tag_tweet(tweet):
     sentence = []
     for sent in sents:
         tokens = nltk.word_tokenize(sent)
-        print (tokens)
         tag_tuples = nltk.pos_tag(tokens)
-        print (tag_tuples)
         for (string, tag) in tag_tuples:
             token = {'word':string, 'pos':tag}            
             sentence.append(token)    
     return sentence
 
+
+def tag_tweet1(sentence):
+    tokens = nltk.word_tokenize(sentence)
+    tag_tuples = nltk.pos_tag(tokens)
+    for (string, tag) in tag_tuples:
+        token = {'word':string, 'pos':tag}            
+        sentence.append(token)    
+    return sentence
+    
 path = nltk.data.find('c:/doc.txt',)
 
 #f = open(path,'rU',encoding='latin2')
 #f = open(path,'rU',encoding='utf-8')
 
 f = open(path,'r')
+
 for line in f:
     line = line.strip()
     #line  = line.encode('unicode_escape')
     #line  = line.encode('utf8')
-    print (tag_tweet (line))
+    sents = nltk.sent_tokenize(line)
+    sentence = []
+    for sent in sents:
+        tokens = nltk.word_tokenize(sent)
+        tag_tuples = nltk.pos_tag(tokens)
+        for (string, tag) in tag_tuples:
+            token = {'word':string, 'pos':tag}            
+            sentence.append(token)    
+
+
+print sentence
+    
+    
     
 '''
-sentences = ['The movie was the worst movie', 'It was the worst acting by the actors']
+https://pypi.python.org/pypi/sentiment_classifier
 
-for sentence in sentences:
-    final = tag_tweet (sentence)
-    print (final)
-    
+from senti_classifier import senti_classifier
+sentences = ['The movie was the not that worst movie', 'It was the not bad acting by the actors']
+pos_score, neg_score = senti_classifier.polarity_scores(sentences)
+print pos_score, neg_score
 '''
